@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAVITECH - Division Of Daniel's Auto Clinic</title>
+    <link rel="shortcut icon" href="./assets/Images/mainLogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/0a68c7f4ca.css" crossorigin="anonymous">
+    <script src="./smooth-scroll.js"></script>
+    <script src="./jQuery.min.js"></script>
+    <script>
+        $(() => {
+            $("#back").click(() => {
+                $('html, body').animate({
+                    scrollTop: $("#home").offset().top
+                }, 400, () => {
+                    window.location.hash = "#home";
+                });
+            });
+
+            /* Handle links pagination */
+            const checkActiveLink = val => {
+                /* Check for active current link */
+                $(".navLinks a").removeClass("currentLink");
+                if (val === null) {
+                    let url = location.href.replace(/http:\/\//g, "");
+                    let ln = location.host.replace(/http:\/\//g, "").length;
+                    if (
+                        url.includes("#home") ||
+                        url.slice(ln, url.length) == "" ||
+                        url.slice(ln, url.length) == "/" ||
+                        url.slice(ln, url.length) == "/index.html" ||
+                        url.slice(ln, url.length) == "/Personal%20Portfolio/index.html"
+                    ) {
+                        $(".navLinks a[href = '#home']").addClass("currentLink");
+                    } else if (url.includes("#services")) {
+                        $(".navLinks a[href = '#services']").addClass("currentLink");
+                    } else if (url.includes("#blog")) {
+                        $(".navLinks a[href = '#blog']").addClass("currentLink");
+                    } else if (url.includes("#about")) {
+                        $(".navLinks a[href = '#about']").addClass("currentLink");
+                    } else if (url.includes("#team")) {
+                        $(".navLinks a[href = '#team']").addClass("currentLink");
+                    } else { return; }   
+                } else {
+                    $(`.navLinks a[href = "${val}"]`).addClass("currentLink");
+                }
+            }
+            checkActiveLink(null);
+            $(".navLinks a").click(e => checkActiveLink("#" + e.target.innerHTML.toLowerCase()));
+            /* Handle links pagination end */
+
+            /* Handle nav display */
+            $(".navControl").click(() => {
+                $(".navLinks").css("right", "0px");
+                $("#bgCover").fadeIn(300);
+            });
+            $(".closeMenu").click(() => {
+                $(".navLinks").css("right", "-500px");
+                $("#bgCover").fadeOut(300);
+            });
+            /* Handle nav display end */
+
+            /* Handle slide nav effect */
+            $(window).scroll(() => {
+                if (
+                    $("body").scrollTop() > 70 ||
+                    $(document.documentElement).scrollTop() > 70
+                ) {
+                    $("nav").css("box-shadow", "0 0 15px #555");
+                }else {
+                    $("nav").css("box-shadow", "none");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header id="home">
+        <div class="topNav">
+            <div class="topNavSection">
+                <div class="topNavChild">
+                    <a href="mailto:favitech2009@gmail.com">
+                        <i class="fas fa-envelope"></i> favitech009@gmail.com
+                    </a>
+                </div>
+                <div class="topNavChild">
+                    <span>
+                        <i class="fas fa-clock"></i> Mon - Sat: 8.00 am - 10.00 pm
+                    </span>
+                </div>
+            </div>
+            <div class="topNavSection">
+                <div class="topNavChild">
+                    <span>
+                        We are reliable, and ready to take on challenges!
+                        <a id="hireLink" href="tel:+2348037227195">Hire Us!</a>
+                    </span>
+                </div>
+                <div class="topNavChild">
+                    <a class="spacedLinks" href="#takeMeSomeWhere" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a class="spacedLinks" href="#takeMeSomeWhere" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="spacedLinks" href="#takeMeSomeWhere" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div id="bgCover"></div>
+            <div class="navLogo">
+                <img src="./assets/Images/mainLogo.png" alt="">
+                <span><span style="color: #BBB;">FAVI</span>TECH</span>
+            </div>
+            <div class="navLinks">
+                <div class="closeMenu"><i class="fas fa-arrow-right"></i></div>
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#team">Team</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <div class="navInfo">
+                <div class="flexDiv"><i class="fas fa-phone"></i></div>
+                <div class="flexDiv">
+                    <p>Have Any Questions?</p>
+                    <p><a href="tel:+2348037227195">+234-803-722-7195</a></p>
+                </div>
+            </div>
+            <div class="navControl"><i class="fas fa-bars"></i></div>
+        </nav>
+        <div class="introFlex">
+            <div class="txtFlex">
+                <p>// Step Into A World Of Ingenuity</p>
+                <h1>Ideal Choice For Satisfaction</h1>
+                <p class="scaleTxt">
+                    We are a team of developers,
+                    working sychronously to deliver quality service.
+                </p>
+            </div>
+            <div class="imgFlex">
+                <img src="./assets/Images/mainLogo.png" alt="">
+            </div>
+        </div>
+    </header>
+    <main>
+        <h2>Your message has been sent, thank you for choosing favitech 🧑🏼‍💻👨‍💻😄😄😄</h2>
+    </main>
+    <footer>
+        <div class="links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#team">Team</a>
+            <a href="#blog">Blog</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+        <div class="flexRight">
+            <p>
+                <img src="./assets/Images/mainLogo.png" alt="" />
+                <span>Favitech</span>
+            </p>
+            <p>
+                Copyright &copy; 2023 Favitech by Daniel's Auto Clinic. All rights reserved. 
+            </p>
+        </div>
+    </footer>
+    <div id="back"><i class="fas fa-arrow-up"></i></div>
+</body>
+</html>
+<!-- Link fbPage on line 31 -->
